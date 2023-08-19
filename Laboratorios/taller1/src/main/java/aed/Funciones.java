@@ -6,7 +6,7 @@ class Funciones {
     }
 
     double distancia(double x, double y) {
-        double res = Math.sqrt((x * x) + (y + y));
+        double res = Math.sqrt((x * x) + (y * y));
         return res;
     }
 
@@ -20,41 +20,44 @@ class Funciones {
     }
 
     boolean esBisiesto(int n) {
-        if((n % 4 == 0) & !(n % 100 == 0)){
-            return true;
+        boolean bisiesto = false;
+        if(((n % 4 == 0) & !(n % 100 == 0)) || (n % 400 == 0)){
+            bisiesto = true;
         }
-        else{
-            return false;
-        }
+        return bisiesto;
     }
 
     int factorialIterativo(int n) {
-        int i = 0;
-        int suma = 0;
-        while(i != n){
-            suma = suma + 1;
+        int prod = 1;
+        for(int i = 1; i <= n; i++){
+            prod = i * prod;
         }
-        return suma;
+        return prod;
     }
 
     int factorialRecursivo(int n) {
-        int res = 0;
+        int res = 1;
         if(n == 0){
             return res;
         }
         else{
-             return factorialRecursivo(n-1) + 1;
+             return factorialRecursivo(n-1) * n;
         }
         
     }
 
     boolean esPrimo(int n) {
-        if (n % 2 == 0){
-            return true;
+        boolean primo = false;
+        int suma = 0;
+        for(int i = 1; i <= n; i++){
+            if(n % i == 0){
+                suma++;
+            }
         }
-        else{
-            return false;
+        if(suma == 2){
+            primo = true;
         }
+        return primo;
     }
 
     int sumatoria(int[] numeros) {
@@ -73,6 +76,7 @@ class Funciones {
             if(numeros[i] == buscado){
                 res = i;
             }
+            i++;
         }
         return res;
     }
@@ -88,9 +92,9 @@ class Funciones {
     }
 
     boolean todosPares(int[] numeros) {
-        boolean sonAllPares = false;
+        boolean sonAllPares = true;
         for(int i = 0; i < numeros.length; i++){
-            if (!esPar(i)){
+            if (!esPar(numeros[i])){
                 sonAllPares = false;
             }
         }
@@ -100,10 +104,14 @@ class Funciones {
     boolean esPrefijo(String s1, String s2) {
         int i = 0;
         boolean prefijo = true;
+        if(s1.length() > s2.length()){
+            return false;
+        }
         while(i < s1.length()){
             if(s1.charAt(i) != s2.charAt(i)){
                 prefijo = false;
             }
+            i++;
         }
         return prefijo;
     }
