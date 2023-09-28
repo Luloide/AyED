@@ -160,8 +160,8 @@ public class AgendaTests {
                 .concat("=====\n")
                 .concat("Clase Algoritmos @ 10/5 17:0\n")
                 .concat("Labo Algoritmos @ 10/5 19:0\n");
-
         assertEquals(esperado, a.toString());
+
 
     }
 

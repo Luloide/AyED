@@ -1,26 +1,29 @@
 package aed;
 
 public class Fecha {
-    private int dia;
-    private int mes;
+    private int d;
+    private int m;
+
     public Fecha(int dia, int mes) {
-        new Fecha(dia, mes);
+        d = dia;
+        m = mes;
     }
 
     public Fecha(Fecha fecha) {
-        throw new UnsupportedOperationException("No implementada aun");
+        d = fecha.d;
+        m = fecha.m;
     }
 
     public Integer dia() {
-        return dia;
+        return d;
     }
 
     public Integer mes() {
-        return mes;
+        return m;
     }
 
     public String toString() {
-        return Integer.toString(dia) +  "/" + Integer.toString(mes);
+        return Integer.toString(d) +  "/" + Integer.toString(m);
     }
 
     @Override
@@ -32,46 +35,45 @@ public class Fecha {
         if (oen || cd) {
             return false;
         }
-        else{
-            return true;
-        }
+        Fecha otraFecha = (Fecha) otra;
+        return this.d == otraFecha.d && this.m == otraFecha.m;
     }
 
     public void incrementarDia() {
         int[] meses31 = {1,3,5,7,8,10,12};
         int[] meses30 = {4,6,9,11};
-        if (dia == 31){
-            if(mes == 12){
-                mes = 1;
-                dia = 1;
+        if (d == 31){
+            if(m == 12){
+                m = 1;
+                d = 1;
             }
             else{
-                dia = 1;
-                mes++;
+                d = 1;
+                m++;
             }
         }
-        else if(dia == 28 && mes == 2){
-            mes++;
-            dia = 1;
+        else if(d == 28 && m == 2){
+            m++;
+            d = 1;
         }
-        else if(dia == 30){
+        else if(d == 30){
             for(int i =0; i<meses31.length; i++){
-                if(mes == i){
-                    dia++;
-                }
-            for(int j = 0; i < meses30.length; i++){
-                if(mes == j){
-                    dia = 1;
-                    mes++;
+                if(m == meses31[i]){
+                    d++;
                 }
             }
+            for(int j = 0; j < meses30.length; j++){
+                if(m == meses30[j]){
+                    d = 1;
+                    m++;
+                }
             }
         }
         else{
-            dia++;
+            d++;
         }
     }
-
+    // re boluda no vi
     private int diasEnMes(int mes) {
         int dias[] = {
                 // ene, feb, mar, abr, may, jun
