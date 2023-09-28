@@ -4,7 +4,6 @@ import java.util.Vector;
 public class Agenda {
     private Fecha fechaAct;
     private Vector<Recordatorio> recs;
-    private int ultimorec;
 
     public Agenda(Fecha fechaActual) {
         fechaAct = new Fecha(fechaActual);
