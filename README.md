@@ -24,6 +24,6 @@ repo de Algoritmos y Estructura de Datos (Algo 2 para los de datos) 2do cuatrime
 ### Evaluaciones
 - TP1
 - TP2
-- Primer Parcia
+- Primer Parcial
 - Segundo Parcial
 
